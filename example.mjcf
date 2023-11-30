@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<mujoco model="2link_robot">
+
+    <!-- Materials -->
+    <asset>
+        <material name="black" rgba="0 0 0 0.7"/>
+        <material name="white" rgba="1 1 1 0.7"/>
+    </asset>
+
+    <!-- Base Link -->
+    <body name="base" pos="0 0 0">
+        <!-- No visual representation for base -->
+    </body>
+
+    <!-- Arm1 Link -->
+    <body name="arm1" pos="0 0 0">
+        <geom type="box" size="1 .05 .05" rgba="0 0 0 0.7"/>
+    </body>
+
+    <!-- Joint connecting base to arm1 -->
+    <joint type="hinge" name="baseHinge" axis="0 0 1" pos="0 0 0">
+        <body1 name="base"/>
+        <body2 name="arm1"/>
+    </joint>
+
+    <!-- Arm2 Link -->
+    <body name="arm2" pos="1 0 0">
+        <geom type="box" size="1 .05 .05" rgba="1 1 1 0.7"/>
+    </body>
+
+    <!-- Joint connecting arm1 to arm2 -->
+    <joint type="hinge" name="interArm" axis="0 0 1" pos="0 0 0">
+        <body1 name="arm1"/>
+        <body2 name="arm2"/>
+    </joint>
+
+    <!-- End Effector Link -->
+    <body name="endEffector" pos="2 0 0">
+        <!-- No visual representation for endEffector -->
+    </body>
+
+    <!-- Joint connecting arm2 to endEffector -->
+    <joint type="fixed" name="ee_joint" pos="0 0 0">
+        <body1 name="arm2"/>
+        <body2 name="endEffector"/>
+    </joint>
+
+</mujoco>
